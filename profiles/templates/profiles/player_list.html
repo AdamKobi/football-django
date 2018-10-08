@@ -1,0 +1,82 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="page-header">GoalKeepers</h1>
+    </div>
+
+<div class="row">
+        {% for player in goalkeepers %}
+        
+    <div class="col-sm-4">
+        <div class="card b-1 m-2">
+                <img class="card-img-top" src="{% if player.image %} {{ player.image.url }} {% else %} {% endif %}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ player.first_name | capfirst }} {{ player.last_name | capfirst }}</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="{% url 'profiles:detail' pk=player.pk %}" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="page-header">Defense</h1>
+    </div>
+    
+<div class="row">
+        {% for player in defense %}
+        
+    <div class="col-sm-4">
+        <div class="card b-1 m-2">
+                <img class="card-img-top" src="{% if player.image %} {{ player.image.url }} {% else %} {% endif %}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ player.first_name | capfirst }} {{ player.last_name | capfirst }}</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="page-header">Midfielder</h1>
+    </div>
+    
+<div class="row">
+        {% for player in midfielder %}
+        
+    <div class="col-sm-4">
+        <div class="card b-1 m-2">
+                <img class="card-img-top" src="{% if player.image %} {{ player.image.url }} {% else %} {% endif %}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ player.first_name | capfirst }} {{ player.last_name | capfirst }}</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="page-header">Forward</h1>
+    </div>
+    
+<div class="row">
+        {% for player in forward %}
+        
+    <div class="col-sm-4">
+        <div class="card b-1 m-2">
+                <img class="card-img-top" src="{% if player.image %} {{ player.image.url }} {% else %} {% endif %}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ player.first_name | capfirst }} {{ player.last_name | capfirst }}</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+        {% endblock %}

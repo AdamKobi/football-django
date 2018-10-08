@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="page-header">Player Injuries</h1>
+</div>
+<div class="table-responsive mb-2">
+    <table class="table table">
+        <thead>
+            <tr>
+                <th>Details</th>
+                <th>Date of Injury</th>
+                <th>Date of Return</th>
+                <th>Athlete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for injury in object_list %}
+                <td><a href="{{ injury.get_absolute_url }}">
+                        <span data-feather="zoom-in"></span>
+                        </a>
+                    </td>
+                <td>
+                        {{ injury.date_of_injury }}
+                </td>
+                <td>
+                    {{ injury.date_of_return }}
+                </td>
+                <td>{{ injury.athlete }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% url 'home' as home_url %} 
+{% url 'injuries:new' as injuries_new %} 
+{% url 'injuries:list' as injuries_list %} 
+{% url 'players:new' as players_new %}
+{% url 'players:list' as players_list %}
+{% url 'gps:home' as gps_home_url %}
+
+<nav class="navbar navbar-dark fixed-top my-navbar flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ home_url }}">Foot AI</a>
+  {% if request.user.is_authenticated %}
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="{% url 'logout' %}">Sign out</a>
+    </li>
+  </ul>
+  {% endif %}
+</nav>
+{% if request.user.is_authenticated %}
+<div class="container">
+  <div class="row">
+    <nav class="flex-sm-column col-sm-2 d-none d-md-block bg-light sidebar">
+      <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="{% url 'home' %}">
+        <span data-feather="home"></span>
+        Dashboard</a>
+      <a class="nav-link" data-toggle="collapse" href="#injuries">
+        <span data-feather="alert-triangle"></span>
+        Injuries
+        <ul class="sidenav-second-level collapse" id="injuries">
+          <a class="nav-link {% if request.path == injuries_new %}active{% endif %}" href="{% url 'injuries:new' %}">
+            <span data-feather="user-plus"></span>
+            New
+          </a>
+          <a class="nav-link {% if request.path == injuries_list %}active{% endif %}" href="{% url 'injuries:list' %}">
+            <span data-feather="user-plus"></span>
+            List
+          </a>
+        </ul>
+      </a>
+      <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+        href="#players">
+        <span data-feather="users"></span>
+        Players
+        <ul class="sidenav-second-level collapse" id="players">
+          <a class="nav-link {% if request.path == players_list %}active{% endif %}" href="{% url 'players:list' %}">
+            <span data-feather="user"></span>
+            List
+          </a>
+          <a class="nav-link {% if request.path == players_new %}active{% endif %}" href="{% url 'players:new' %}">
+            <span data-feather="user-plus"></span>
+            Add player
+          </a>
+        </ul>
+      </a>
+      <a class="nav-link {% if request.path == gps_home_url %}active{% endif %}" href="{% url 'gps:home' %}">
+        <span data-feather="grid"></span>
+        GPS
+      </a>
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <span>Saved reports</span>
+        <a class="d-flex align-items-center text-muted" href="#">
+          <span data-feather="plus-circle"></span>
+        </a>
+      </h6>
+      <ul class="nav flex-column mb-2">
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span data-feather="file-text"></span>
+            Current month
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span data-feather="file-text"></span>
+            Last quarter
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+{% endif %}

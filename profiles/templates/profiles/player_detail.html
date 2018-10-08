@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card b-1 m-2">
+                <img class="card-img-top" src="{% if object.image %} {{ object.image.url }} {% else %} {% endif %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ object.first_name | capfirst}} {{ object.last_name | capfirst}}</h5>
+                    <p class="card-text">Position: {{ object.position }}</p>
+                    <p class="card-text">Age: {{ object.age }}</p>
+                    <p class="card-text">Weight: {{ object.weight }}</p>
+                    <p class="card-text">Height: {{ object.height }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <canvas class="foot-ai-render-chart" id="playerChart1" data-type="week" width="10" height="4"></canvas>
+            <canvas class="foot-ai-render-chart" id="playerChart2" data-type="week" width="10" height="4"></canvas>
+        </div>
+    </div>
+</div>
+{% endblock %}

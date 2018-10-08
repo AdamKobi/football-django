@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1>Add New Player Profile</h1>
+</div>
+
+<div class="form">
+            {% if form %}
+            <form method="POST" enctype="multipart/form-data">{% csrf_token%}
+            {% crispy form %}
+            <input type="submit" value="submit form" class="btn btn-primary"/> 
+            </form>
+            {% endif %}
+        </div>
+{% endblock %}
+    

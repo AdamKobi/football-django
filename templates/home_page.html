@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Overview</h1>
+</div>
+<div class="container">
+  <div class="row">
+    {% for player in high_risk %}
+    <div class="col-sm-4">
+      <div class="card b-1 m-2">
+        <img class="card-img-top" src="{% if player.image %} {{ player.image.url }} {% else %} {% endif %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ player.first_name | capfirst }} {{ player.last_name | capfirst }}</h5>
+          <p class="card-text">High Risk</p>
+          <a href="{% url 'profiles:detail' pk=player.pk %}" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% for player in med_risk %}
+    <div class="col-sm-4">
+      <div class="card b-1 m-2">
+        <img class="card-img-top" src="{% if player.image %} {{ player.image.url }} {% else %} {% endif %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ player.first_name | capfirst }} {{ player.last_name | capfirst }}</h5>
+          <p class="card-text">Medium Risk</p>
+          <a href="{% url 'profiles:detail' pk=player.pk %}" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% for player in low_risk %}
+    <div class="col-sm-4">
+      <div class="card b-1 m-2">
+        <img class="card-img-top" src="{% if player.image %} {{ player.image.url }} {% else %} {% endif %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ player.first_name | capfirst }} {{ player.last_name | capfirst }}</h5>
+          <p class="card-text">Low Risk</p>
+          <a href="{% url 'profiles:detail' pk=player.pk %}" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

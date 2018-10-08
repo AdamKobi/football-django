@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="page-header">Injury Detail</h1>
+</div>
+    <a class="btn btn-default" href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+    <h2>Injury Added</h2>
+    <p>Athlete: {{ object.athlete }}</p>
+    <p>Date of Injury: {{ object.date_of_injury }}</p>
+    <p>Date of Return: {{ object.date_of_return }}</p>
+    <p>Participation: {{ object.participate }}</p>
+    <p>Injured Body Part: {{ object.injured_body_part }}</p>
+    <p>Left/Right: {{ object.left_right }}</p>
+    <p>Type of Injury: {{ object.type_of_injury }}</p>
+    <p>Where it Happened: {{ object.where_it_happened }}</p>
+    <p>Cause of Injury: {{ object.cause_of_injury }}</p>
+    <p>Contact/Collision: {{ object.contact_collision }}</p>
+    <p>Mechnism: {{ object.mechanism }}</p>
+    <p>Place of Injury: {{ object.place_of_injury }}</p>
+{% endblock %}
+
+
+
+
